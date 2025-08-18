@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.DashboardPage"
+             Title="Dashboard"
+             BackgroundColor="#F8FAFC">
+
+    <RefreshView x:Name="RefreshView" Refreshing="OnRefreshing">
+        <ScrollView>
+            <Grid Padding="16" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Welcome Header -->
+                <Border Grid.Row="0" 
+                        BackgroundColor="White" 
+                        Stroke="#E2E8F0" 
+                        StrokeThickness="1"
+                        Padding="20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   x:Name="WelcomeLabel"
+                                   Text="Welcome back, Student!"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E293B" />
+                            <Label Grid.Row="1"
+                                   x:Name="StudentIdLabel"
+                                   Text="Student ID: STU001"
+                                   FontSize="14"
+                                   TextColor="#64748B"
+                                   Margin="0,5,0,0" />
+                            <Label Grid.Row="2"
+                                   Text="Ready to learn something new today?"
+                                   FontSize="14"
+                                   TextColor="#64748B"
+                                   Margin="0,5,0,0" />
+                        </Grid>
+
+                        <!-- Profile Picture Placeholder -->
+                        <Border Grid.Column="1" 
+                                BackgroundColor="#64748B" 
+                                WidthRequest="60" 
+                                HeightRequest="60">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30" />
+                            </Border.StrokeShape>
+                            <Image Source="user.png" 
+                                   WidthRequest="28" 
+                                   HeightRequest="28" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Quick Stats -->
+                <Grid Grid.Row="1" ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Enrolled Modules -->
+                    <Border Grid.Column="0" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Row="0" 
+                                   Source="book.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="1" 
+                                   x:Name="EnrolledCountLabel" 
+                                   Text="5" 
+                                   FontSize="28" 
+                                   FontAttributes="Bold" 
+                                   TextColor="#64748B" 
+                                   HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Enrolled" FontSize="12" TextColor="#6B7280" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Available Modules -->
+                    <Border Grid.Column="1" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" 
+                                   Source="arrow.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1" 
+                                   x:Name="AvailableCountLabel" 
+                                   Text="12" 
+                                   FontSize="28" 
+                                   FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Available" FontSize="12" TextColor="#6B7280" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Completed Modules -->
+                    <Border Grid.Column="2" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" 
+                                   Source="checked.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1" x:Name="CompletedCountLabel" Text="3" FontSize="28" FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Completed" FontSize="12" TextColor="#6B7280" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Quick Actions -->
+                <Border Grid.Row="2" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" 
+                               Text="Quick Actions" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#1E293B" 
+                               Margin="0,0,0,15" />
+
+                        <Grid Grid.Row="1" ColumnSpacing="12" RowSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="0"
+                                Text="Browse Modules"
+                                ImageSource="book.png"
+                                BackgroundColor="#64748B"
+                                ContentLayout="Left,8"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="50"
+                                Clicked="OnBrowseModulesClicked" />
+
+                        <Button Grid.Row="0" Grid.Column="1"
+                                Text="My Enrollments"
+                                ImageSource="totally.png"
+                                BackgroundColor="#64748B"
+                                ContentLayout="Left,8"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="50"
+                                Clicked="OnMyEnrollmentsClicked" />
+
+                        <Button Grid.Row="1" Grid.Column="0"
+                                Text="My Profile"
+                                ImageSource="user.png"
+                                BackgroundColor="#64748B"
+                                ContentLayout="Left,8"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="50"
+                                Clicked="OnMyProfileClicked" />
+
+                        <Button Grid.Row="1" Grid.Column="1"
+                                Text="Search Modules"
+                                ImageSource="loupe.png"
+                                BackgroundColor="#64748B"
+                                ContentLayout="Left,8"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="50"
+                                Clicked="OnSearchModulesClicked" />
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- Recent Enrollments -->
+                <Border Grid.Row="3" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                   Text="Recent Enrollments" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold" 
+                                   TextColor="#1E293B" />
+
+                            <Label Grid.Column="1"
+                                   Text="View All"
+                                   FontSize="14"
+                                   TextColor="#3B82F6"
+                                   VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnViewAllEnrollmentsTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        <CollectionView Grid.Row="1" x:Name="RecentEnrollmentsCollection" HeightRequest="200">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="0,5">
+                                        <Border BackgroundColor="#F8FAFC" Stroke="#E2E8F0" StrokeThickness="1" Padding="15">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="8" />
+                                            </Border.StrokeShape>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Grid.Column="0" 
+                                                        BackgroundColor="{Binding CategoryColor}" 
+                                                        WidthRequest="40" 
+                                                        HeightRequest="40" 
+                                                        Margin="0,0,15,0">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="8" />
+                                                    </Border.StrokeShape>
+                                                    <Image Source="{Binding Icon}" 
+                                                           WidthRequest="18" 
+                                                           HeightRequest="18"
+                                                           Aspect="AspectFit"
+                                                           HorizontalOptions="Center" 
+                                                           VerticalOptions="Center" />
+                                                    
+                                                </Border>
+
+                                                <Grid Grid.Column="1">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Label Grid.Row="0"
+                                                           Text="{Binding ModuleName}"
+                                                           FontSize="16"
+                                                           FontAttributes="Bold"
+                                                           TextColor="#1E293B" />
+                                                    <Label Grid.Row="1"
+                                                           Text="{Binding ModuleCode}"
+                                                           FontSize="12"
+                                                           TextColor="#64748B" />
+                                                </Grid>
+
+                                                <Label Grid.Column="2"
+                                                       Text="{Binding Status}"
+                                                       FontSize="12"
+                                                       TextColor="#059669"
+                                                       VerticalOptions="Center"
+                                                       FontAttributes="Bold" />
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Border>
+
+                <!-- App Info -->
+                <Border Grid.Row="4" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <HorizontalStackLayout Grid.Row="0" 
+                                               Spacing="8" 
+                                               HorizontalOptions="Center">
+                            <Image Source="mobile_development.png"
+                                   WidthRequest="16"
+                                   HeightRequest="16"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center" />
+                            <Label Text="Student Portal v1.0"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E293B"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                        <Label Grid.Row="1"
+                               Text="Your gateway to academic excellence"
+                               FontSize="12"
+                               TextColor="#64748B"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,5,0,0" />
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>

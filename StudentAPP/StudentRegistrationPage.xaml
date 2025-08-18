@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.StudentRegistrationPage"
+             Title="Student Registration"
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Header Section -->
+            <Grid Grid.Row="1" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Logo Placeholder -->
+                <Border Grid.Row="0" 
+                        BackgroundColor="#2E86AB" 
+                        WidthRequest="70" 
+                        HeightRequest="70" 
+                        HorizontalOptions="Center"
+                        Margin="0,0,0,15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="35" />
+                    </Border.StrokeShape>
+                    <Label Text="SP" 
+                           FontSize="28" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+                </Border>
+
+                <Label Grid.Row="1"
+                       Text="Join Student Portal" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#1E3A8A" 
+                       HorizontalTextAlignment="Center" />
+                <Label Grid.Row="2"
+                       Text="Create your academic account" 
+                       FontSize="16" 
+                       TextColor="#6B7280" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,5,0,0" />
+                <Label Grid.Row="3"
+                       Text="Fill in your details below" 
+                       FontSize="14" 
+                       TextColor="#9CA3AF" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,10,0,0" />
+            </Grid>
+
+            <!-- Registration Form -->
+            <Grid Grid.Row="2" RowSpacing="15" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Full Name Field -->
+                <Border Grid.Row="0" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="user.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="FullNameEntry"
+                               Placeholder="Full Name (First Last)" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <!-- Email Field -->
+                <Border Grid.Row="1" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="letter.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="EmailEntry"
+                               Placeholder="Email Address" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               Keyboard="Email"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <!-- Phone Field -->
+                <Border Grid.Row="2" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="phone_call.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="PhoneEntry"
+                               Placeholder="Phone Number" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               Keyboard="Telephone"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <!-- Student ID Field -->
+                <Border Grid.Row="3" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="graduation_cap.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="StudentIdEntry"
+                               Placeholder="Desired Student ID (e.g. STU004)" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <!-- Password Field -->
+                <Border Grid.Row="4" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="padlock.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="PasswordEntry"
+                               Placeholder="Password" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               IsPassword="True"
+                               BackgroundColor="Transparent" />
+                                <ImageButton Grid.Column="2"
+                                             x:Name="ShowPasswordBtn"
+                                             Source="view.png"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="20"
+                                             HeightRequest="20"
+                                             Aspect="AspectFit"
+                                             VerticalOptions="Center"
+                                             Clicked="OnShowPasswordClicked" />
+                    </Grid>
+                </Border>
+
+                <!-- Confirm Password Field -->
+                <Border Grid.Row="5" 
+                        BackgroundColor="White" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        Padding="15">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" 
+                               Source="padlock.png" 
+                               WidthRequest="18" 
+                               HeightRequest="18"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0" />
+                        <Entry Grid.Column="1"
+                               x:Name="ConfirmPasswordEntry"
+                               Placeholder="Confirm Password" 
+                               PlaceholderColor="#9CA3AF"
+                               TextColor="#1F2937"
+                               FontSize="16"
+                               IsPassword="True"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <!-- Terms and Conditions -->
+                <Grid Grid.Row="6" Margin="0,15,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Grid.Column="0"
+                              x:Name="TermsCheckBox" 
+                              Color="#2E86AB" 
+                              VerticalOptions="Center" />
+                    <Label Grid.Column="1" VerticalOptions="Center" Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I agree to the " TextColor="#6B7280" FontSize="14" />
+                                <Span Text="Terms of Service" TextColor="#2E86AB" FontSize="14" FontAttributes="Bold">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnTermsTapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text=" and " TextColor="#6B7280" FontSize="14" />
+                                <Span Text="Privacy Policy" TextColor="#2E86AB" FontSize="14" FontAttributes="Bold">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnPrivacyTapped" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </Grid>
+
+            <!-- Registration Actions -->
+            <Grid Grid.Row="3" RowSpacing="15" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" 
+                        x:Name="RegisterButton"
+                        Text="Create Account" 
+                        BackgroundColor="#2E86AB" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold"
+                        HeightRequest="50" 
+                        Clicked="OnRegisterClicked">
+                    <Button.Shadow>
+                        <Shadow Brush="#2E86AB" Opacity="0.3" Radius="8" Offset="0,4" />
+                    </Button.Shadow>
+                </Button>
+
+                <!-- Divider -->
+                <Grid Grid.Row="1" HorizontalOptions="Center" Margin="0,15,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Column="0" 
+                             BackgroundColor="#E5E7EB" 
+                             HeightRequest="1" 
+                             VerticalOptions="Center" />
+                    <Label Grid.Column="1" 
+                           Text="OR" 
+                           TextColor="#9CA3AF" 
+                           FontSize="12" 
+                           Margin="15,0" 
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="2" 
+                             BackgroundColor="#E5E7EB" 
+                             HeightRequest="1" 
+                             VerticalOptions="Center" />
+                </Grid>
+
+                <!-- Back to Login -->
+                <Grid Grid.Row="2" HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Text="Already have an account? " 
+                           TextColor="#6B7280" 
+                           FontSize="14" />
+                    <Label Grid.Column="1"
+                           Text="Sign In" 
+                           TextColor="#2E86AB" 
+                           FontSize="14" 
+                           FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSignInTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+
+            <!-- Footer Info -->
+            <Label Grid.Row="4" 
+                   Text="By creating an account, you'll have access to course materials, assignments, and academic resources." 
+                   FontSize="12" 
+                   TextColor="#9CA3AF" 
+                   HorizontalTextAlignment="Center" 
+                   Margin="0,20,0,0" />
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

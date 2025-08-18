@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.EnrollmentsPage"
+             Title="My Enrollments"
+             BackgroundColor="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header with Stats -->
+        <Border Grid.Row="0" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20" Margin="16,16,16,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Title and Summary -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                    <HorizontalStackLayout Grid.Row="0" 
+                                           Spacing="8">
+                        <Image Source="book.png"
+                               WidthRequest="22"
+                               HeightRequest="22"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center" />
+    
+                        <Label Text="My Enrollments"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#1E293B"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                        <Label Grid.Row="1"
+                               x:Name="EnrollmentSummaryLabel"
+                               Text="Loading enrollments..."
+                               FontSize="14"
+                               TextColor="#64748B"
+                               Margin="0,4,0,0" />
+                    </Grid>
+
+                    <Button Grid.Column="1"
+                            Text="📅 Calendar View"
+                            BackgroundColor="#3B82F6"
+                            TextColor="White"
+                            FontSize="12"
+                            HeightRequest="36"
+                            Clicked="OnCalendarViewClicked" />
+                </Grid>
+
+                <!-- Quick Stats -->
+                <Grid Grid.Row="1" ColumnSpacing="16" Margin="0,16,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Active Enrollments -->
+                    <Border Grid.Column="0" BackgroundColor="#EFF6FF" Padding="12" Stroke="#DBEAFE" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Row="0" 
+                                   Source="open_book.png" 
+                                   WidthRequest="20" 
+                                   HeightRequest="20" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            
+                            <Label Grid.Row="1" x:Name="ActiveCountLabel" Text="0" FontSize="20" FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Active" FontSize="10" TextColor="#64748B" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Completed -->
+                    <Border Grid.Column="1" BackgroundColor="#F0FDF4" Padding="12" Stroke="#DCFCE7" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" 
+                                   Source="checked.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1" x:Name="CompletedCountLabel" Text="0" FontSize="20" FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Completed" FontSize="10" TextColor="#64748B" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- In Progress -->
+                    <Border Grid.Column="2" BackgroundColor="#FEF3F2" Padding="12" Stroke="#FECACA" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" 
+                                   Source="hour_glass.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1" x:Name="InProgressCountLabel" Text="0" FontSize="20" FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="In Progress" FontSize="10" TextColor="#64748B" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Total Credits -->
+                    <Border Grid.Column="3" BackgroundColor="#FDF4FF" Padding="12" Stroke="#F3E8FF" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" 
+                                   Source="arrow.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />                            <Label Grid.Row="1" x:Name="TotalCreditsLabel" Text="0" FontSize="20" FontAttributes="Bold" 
+                                   TextColor="#64748B" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Text="Credits" FontSize="10" TextColor="#64748B" 
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Filter and Search -->
+        <Border Grid.Row="1" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16" Margin="16,8,16,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <Grid RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Search Bar -->
+                <Border Grid.Row="0" BackgroundColor="#F1F5F9" Stroke="#CBD5E1" StrokeThickness="1" Padding="12">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Row="0" 
+                                   Source="loupe.png" 
+                                   WidthRequest="20" 
+                                   HeightRequest="20" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        
+                        <Entry Grid.Column="1" 
+                               x:Name="SearchEntry"
+                               Placeholder="Search enrollments..."
+                               PlaceholderColor="#94A3B8"
+                               TextColor="#1E293B"
+                               BackgroundColor="Transparent"
+                               TextChanged="OnSearchTextChanged" />
+                        
+                        <ImageButton Grid.Column="2" 
+                                     Source="perfomance_review.png"
+                                     BackgroundColor="Transparent"
+                                     WidthRequest="15"
+                                     HeightRequest="15"
+                                     Aspect="AspectFit"
+                                     Clicked="OnReportsClicked" />
+                        
+                    </Grid>
+                    
+                </Border>
+
+                <!-- Status Filter Tabs -->
+                <ScrollView Grid.Row="1" Orientation="Horizontal">
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" x:Name="AllFilterBtn" Text="All" FontSize="12" 
+                                BackgroundColor="#3B82F6" TextColor="White" HeightRequest="32" 
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="1" x:Name="ActiveFilterBtn" Text="Enrolled" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="2" x:Name="InProgressFilterBtn" Text="In Progress" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="3" x:Name="CompletedFilterBtn" Text="Completed" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="4" x:Name="DroppedFilterBtn" Text="Dropped" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                    </Grid>
+                </ScrollView>
+            </Grid>
+        </Border>
+
+        <!-- Enrollments List -->
+        <RefreshView Grid.Row="2" x:Name="EnrollmentsRefreshView" Refreshing="OnRefreshing" Margin="16,8,16,16">
+            <CollectionView x:Name="EnrollmentsCollection" BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,6">
+                            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Module Header -->
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Grid.Column="0" 
+                                                BackgroundColor="{Binding CategoryColor}" 
+                                                WidthRequest="48" 
+                                                HeightRequest="48" 
+                                                Margin="0,0,12,0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="12" />
+                                            </Border.StrokeShape>
+                                        <Image Source="{Binding Icon}" 
+                                               WidthRequest="20" 
+                                               HeightRequest="20"
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center" 
+                                               VerticalOptions="Center" />
+                                        </Border>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0"
+                                                   Text="{Binding ModuleName}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#1E293B" />
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding ModuleCode}"
+                                                   FontSize="12"
+                                                   TextColor="#64748B"
+                                                   Margin="0,2,0,0" />
+                                            <Label Grid.Row="2"
+                                                   Text="{Binding Instructor}"
+                                                   FontSize="12"
+                                                   TextColor="#3B82F6"
+                                                   Margin="0,2,0,0" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border Grid.Row="0" 
+                                                    BackgroundColor="{Binding StatusColor}" 
+                                                    Padding="8,4"
+                                                    Margin="0,0,0,4">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="6" />
+                                                </Border.StrokeShape>
+                                                <Label Text="{Binding Status}" 
+                                                       FontSize="10" 
+                                                       TextColor="White" 
+                                                       FontAttributes="Bold" />
+                                            </Border>
+
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding ProgressText}"
+                                                   FontSize="10"
+                                                   TextColor="#6B7280"
+                                                   HorizontalTextAlignment="End" />
+                                        </Grid>
+                                    </Grid>
+
+                                    <!-- Enrollment Details -->
+                                    <Grid Grid.Row="1" ColumnSpacing="16" Margin="0,12,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="0" 
+                                               Source="calendar.png" 
+                                               WidthRequest="20" 
+                                               HeightRequest="20" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Text="{Binding EnrollmentDate}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" 
+                                               Source="arrow.png" 
+                                               WidthRequest="20" 
+                                               HeightRequest="20" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />                                            <Label Grid.Column="1" Text="{Binding Credits}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" 
+                                               Source="open_book.png" 
+                                               WidthRequest="20" 
+                                               HeightRequest="20" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />                                            <Label Grid.Column="1" Text="{Binding Grade}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </Grid>
+
+                                    <!-- Progress Bar (for active enrollments) -->
+                                    <Grid Grid.Row="2" Margin="0,12,0,0" IsVisible="{Binding ShowProgress}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="Course Progress" FontSize="12" TextColor="#6B7280" />
+                                            <Label Grid.Column="1" Text="{Binding ProgressPercentage}" FontSize="12" TextColor="#6B7280" FontAttributes="Bold" />
+                                        </Grid>
+
+                                        <Border Grid.Row="1" BackgroundColor="#F1F5F9" HeightRequest="6" Margin="0,4,0,0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="3" />
+                                            </Border.StrokeShape>
+                                            <Border BackgroundColor="{Binding ProgressColor}" 
+                                                    WidthRequest="{Binding ProgressWidth}"
+                                                    HorizontalOptions="Start">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="3" />
+                                                </Border.StrokeShape>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Action Buttons -->
+                                    <Grid Grid.Row="3" ColumnSpacing="8" Margin="0,12,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0"
+                                                Text="{Binding PrimaryActionText}"
+                                                ImageSource="{Binding PrimaryActionIcon}"
+                                                ContentLayout="Left,6"
+                                                BackgroundColor="{Binding PrimaryActionColor}"
+                                                TextColor="White"
+                                                FontSize="12"
+                                                HeightRequest="36"
+                                                Command="{Binding Source={x:Reference EnrollmentsCollection}, Path=BindingContext.PrimaryActionCommand}"
+                                                CommandParameter="{Binding}" />
+
+                                        <Button Grid.Column="1"
+                                                Text="{Binding SecondaryActionText}"
+                                                ImageSource="{Binding SecondaryActionIcon}"
+                                                ContentLayout="Left,6"
+                                                BackgroundColor="{Binding SecondaryActionColor}"
+                                                TextColor="White"
+                                                FontSize="12"
+                                                HeightRequest="36"
+                                                Command="{Binding Source={x:Reference EnrollmentsCollection}, Path=BindingContext.SecondaryActionCommand}"
+                                                CommandParameter="{Binding}" />
+
+                                        <Button Grid.Column="2"
+                                                Text="⋮"
+                                                BackgroundColor="#6B7280"
+                                                TextColor="White"
+                                                FontSize="16"
+                                                WidthRequest="36"
+                                                HeightRequest="36"
+                                                Command="{Binding Source={x:Reference EnrollmentsCollection}, Path=BindingContext.MoreActionsCommand}"
+                                                CommandParameter="{Binding}" />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <!-- Empty State -->
+                <CollectionView.EmptyView>
+                    <Grid>
+                        <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="40" Margin="0,20">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image Grid.Row="0"
+                                       Source="book.png"
+                                       WidthRequest="48"
+                                       HeightRequest="48"
+                                       Aspect="AspectFit"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+
+                                <Label Grid.Row="1"
+                                       Text="No Enrollments Found"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E293B"
+                                       HorizontalTextAlignment="Center"
+                                       Margin="0,12,0,0" />
+
+                                <Label Grid.Row="2"
+                                       Text="You haven't enrolled in any modules yet. Browse available modules to start your learning journey."
+                                       FontSize="14"
+                                       TextColor="#64748B"
+                                       HorizontalTextAlignment="Center"
+                                       Margin="0,8,0,0" />
+
+                                <Button Grid.Row="3"
+                                        Text="Browse Modules"
+                                        BackgroundColor="#3B82F6"
+                                        TextColor="White"
+                                        FontSize="14"
+                                        HeightRequest="40"
+                                        Margin="0,20,0,0"
+                                        Clicked="OnBrowseModulesClicked" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+
+</ContentPage>

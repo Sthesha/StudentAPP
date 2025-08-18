@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.SignUpPage"
+             Title="Sign Up"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid Padding="30" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Logo/Title Section -->
+            <Grid Grid.Row="1" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Create Account" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#2E3A47" 
+                       HorizontalTextAlignment="Center" />
+                <Label Grid.Row="1"
+                       Text="Join us today" 
+                       FontSize="16" 
+                       TextColor="#7A8A99" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,5,0,0" />
+            </Grid>
+
+            <!-- Sign Up Form -->
+            <Grid Grid.Row="2" RowSpacing="15" Margin="0,30,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Full Name Field -->
+                <Border Grid.Row="0"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="FullNameEntry"
+                           Placeholder="Full Name" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Email Field -->
+                <Border Grid.Row="1"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="Student Email" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           Keyboard="Email"
+                           BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Phone Number Field -->
+                <Border Grid.Row="2"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="PhoneEntry"
+                           Placeholder="Phone Number" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           Keyboard="Telephone"
+                           BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Password Field -->
+                <Border Grid.Row="3"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Password" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           IsPassword="True"
+                           BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Confirm Password Field -->
+                <Border Grid.Row="4"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="ConfirmPasswordEntry"
+                           Placeholder="Confirm Password" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           IsPassword="True"
+                           BackgroundColor="Transparent" />
+                </Border>
+            </Grid>
+
+            <!-- Terms and Conditions -->
+            <Grid Grid.Row="3" HorizontalOptions="Center" Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Grid.Column="0"
+                          x:Name="TermsCheckBox" 
+                          Color="#007AFF" 
+                          VerticalOptions="Center" />
+                <Label Grid.Column="1" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="I agree to the " TextColor="#7A8A99" FontSize="12" />
+                            <Span Text="Terms and Conditions" TextColor="#007AFF" FontSize="12" FontAttributes="Bold">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTermsTapped" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+
+            <!-- Sign Up Button and Navigation -->
+            <Grid Grid.Row="4" RowSpacing="15" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0"
+                        x:Name="SignUpButton"
+                        Text="Create Account" 
+                        BackgroundColor="#007AFF" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold"
+                        HeightRequest="50" 
+                        Clicked="OnSignUpClicked" />
+
+                <!-- Divider -->
+                <Grid Grid.Row="1" HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Column="0" 
+                             BackgroundColor="#E1E5E9" 
+                             HeightRequest="1" 
+                             VerticalOptions="Center" />
+                    <Label Grid.Column="1" 
+                           Text="OR" 
+                           TextColor="#A0A9B8" 
+                           FontSize="12" 
+                           Margin="15,0" 
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="2" 
+                             BackgroundColor="#E1E5E9" 
+                             HeightRequest="1" 
+                             VerticalOptions="Center" />
+                </Grid>
+
+                <!-- Sign In Link -->
+                <Grid Grid.Row="2" HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Text="Already have an account? " 
+                           TextColor="#7A8A99" 
+                           FontSize="14" />
+                    <Label Grid.Column="1"
+                           Text="Sign In" 
+                           TextColor="#007AFF" 
+                           FontSize="14" 
+                           FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSignInTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

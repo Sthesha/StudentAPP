@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.SignInPage"
+             Title="Sign In"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid Padding="30" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Logo/Title Section -->
+            <Grid Grid.Row="1" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Welcome Back" 
+                       FontSize="28"
+                       FontAttributes="Bold" 
+                       TextColor="#2E3A47" 
+                       HorizontalTextAlignment="Center" />
+                <Label Grid.Row="1"
+                       Text="Sign in to your account" 
+                       FontSize="16" 
+                       TextColor="#7A8A99" 
+                       HorizontalTextAlignment="Center" 
+                       Margin="0,5,0,0" />
+            </Grid>
+
+            <!-- Sign In Form -->
+            <Grid Grid.Row="2" RowSpacing="15" Margin="0,30,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Email Field -->
+                <Border Grid.Row="0" 
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="Email Address" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           Keyboard="Email"
+                           BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Password Field -->
+                <Border Grid.Row="1"
+                        BackgroundColor="#F8F9FA" 
+                        Stroke="Transparent" 
+                        StrokeThickness="0"
+                        Padding="15,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Password" 
+                           PlaceholderColor="#A0A9B8"
+                           TextColor="#2E3A47"
+                           FontSize="16"
+                           IsPassword="True"
+                           BackgroundColor="Transparent" />
+                </Border>
+            </Grid>
+
+            <!-- Forgot Password -->
+            <Label Grid.Row="3" 
+                   Text="Forgot Password?" 
+                   TextColor="#007AFF" 
+                   FontSize="14" 
+                   HorizontalOptions="End" 
+                   Margin="0,10,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- Sign In Button -->
+            <Button Grid.Row="4" 
+                    x:Name="SignInButton"
+                    Text="Sign In" 
+                    BackgroundColor="#007AFF" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold"
+                    HeightRequest="50" 
+                    Margin="0,20,0,0"
+                    Clicked="OnSignInClicked" />
+
+            <!-- Divider -->
+            <Grid Grid.Row="5" HorizontalOptions="Center" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView Grid.Column="0" 
+                         BackgroundColor="#E1E5E9" 
+                         HeightRequest="1" 
+                         VerticalOptions="Center" />
+                <Label Grid.Column="1" 
+                       Text="OR" 
+                       TextColor="#A0A9B8" 
+                       FontSize="12" 
+                       Margin="15,0" 
+                       VerticalOptions="Center" />
+                <BoxView Grid.Column="2" 
+                         BackgroundColor="#E1E5E9" 
+                         HeightRequest="1" 
+                         VerticalOptions="Center" />
+            </Grid>
+
+            <!-- Sign Up Link -->
+            <Grid Grid.Row="6" HorizontalOptions="Center" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       Text="Don't have an account? " 
+                       TextColor="#7A8A99" 
+                       FontSize="14" />
+                <Label Grid.Column="1"
+                       Text="Sign Up" 
+                       TextColor="#007AFF" 
+                       FontSize="14" 
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSignUpTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

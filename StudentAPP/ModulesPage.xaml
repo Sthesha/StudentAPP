@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.ModulesPage"
+             Title="Module Selection"
+             BackgroundColor="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search and Filter Header -->
+        <Border Grid.Row="0" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16" Margin="16,16,16,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <Grid RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Search Bar -->
+                <Border Grid.Row="0" BackgroundColor="#F1F5F9" Stroke="#CBD5E1" StrokeThickness="1" Padding="12">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Row="0" 
+                                   Source="loupe.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        
+                        <Entry Grid.Column="1" 
+                               x:Name="SearchEntry"
+                               Placeholder="Search modules, codes, or instructors..."
+                               PlaceholderColor="#94A3B8"
+                               TextColor="#1E293B"
+                               BackgroundColor="Transparent"
+                               TextChanged="OnSearchTextChanged" />
+                        <Image Grid.Column="2" 
+                                   Source="settings.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <!-- Filter Options -->
+                <ScrollView Grid.Row="1" Orientation="Horizontal">
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" x:Name="AllFilterBtn" Text="All" FontSize="12" 
+                                BackgroundColor="#64748B" TextColor="White" HeightRequest="32" 
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="1" x:Name="ComputerScienceFilterBtn" Text="Computer Science" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="2" x:Name="MathematicsFilterBtn" Text="Mathematics" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="3" x:Name="EngineeringFilterBtn" Text="Engineering" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                        <Button Grid.Column="4" x:Name="BusinessFilterBtn" Text="Business" FontSize="12" 
+                                BackgroundColor="#E2E8F0" TextColor="#64748B" HeightRequest="32"
+                                Clicked="OnFilterClicked" />
+                    </Grid>
+                </ScrollView>
+            </Grid>
+        </Border>
+
+        <!-- Module Stats -->
+        <Border Grid.Row="1" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16" Margin="16,8,16,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12" />
+            </Border.StrokeShape>
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Row="0" 
+                            Source="totally.png" 
+                            WidthRequest="24" 
+                            HeightRequest="24" 
+                            Aspect="AspectFit"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               x:Name="TotalModulesLabel" 
+                               Text="24" FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#64748B" />
+                        <Label Grid.Row="1" 
+                               Text="Total Modules" 
+                               FontSize="10" 
+                               TextColor="#64748B" />
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" 
+                                   Source="checkmark.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               x:Name="AvailableModulesLabel" 
+                               Text="18" FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#64748B" />
+                        <Label Grid.Row="1" Text="Available" FontSize="10" TextColor="#64748B" />
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" 
+                                   Source="arrow.png" 
+                                   WidthRequest="24" 
+                                   HeightRequest="24" 
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" 
+                               x:Name="EnrolledModulesLabel" 
+                               Text="5" FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#64748B" />
+                        <Label Grid.Row="1" Text="Enrolled" FontSize="10" TextColor="#64748B" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Modules List -->
+        <RefreshView Grid.Row="2" x:Name="ModulesRefreshView" Refreshing="OnRefreshing" Margin="16,8,16,16">
+            <CollectionView x:Name="ModulesCollection" BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,4">
+                            <Border BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Module Header -->
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Grid.Column="0" 
+                                                BackgroundColor="{Binding CategoryColor}" 
+                                                WidthRequest="48" 
+                                                HeightRequest="48" 
+                                                Margin="0,0,12,0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="12" />
+                                            </Border.StrokeShape>
+                                            <Image Source="{Binding Icon}" 
+                                                   WidthRequest="20" 
+                                                   HeightRequest="20"
+                                                   Aspect="AspectFit"
+                                                   HorizontalOptions="Center" 
+                                                   VerticalOptions="Center" />
+                                        </Border>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0"
+                                                   Text="{Binding ModuleName}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#1E293B" />
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding ModuleCode}"
+                                                   FontSize="12"
+                                                   TextColor="#64748B"
+                                                   Margin="0,2,0,0" />
+                                            <Label Grid.Row="2"
+                                                   Text="{Binding Instructor}"
+                                                   FontSize="12"
+                                                   TextColor="#64748B"
+                                                   Margin="0,2,0,0" />
+                                        </Grid>
+
+                                        <Border Grid.Column="2" 
+                                                BackgroundColor="{Binding StatusColor}" 
+                                                Padding="8,4"
+                                                VerticalOptions="Start">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="6" />
+                                            </Border.StrokeShape>
+                                            <Label Text="{Binding Status}" 
+                                                   FontSize="10" 
+                                                   TextColor="White" 
+                                                   FontAttributes="Bold" />
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Module Description -->
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Description}"
+                                           FontSize="14"
+                                           TextColor="#4B5563"
+                                           Margin="0,12,0,0"
+                                           LineBreakMode="WordWrap" />
+
+                                    <!-- Module Details -->
+                                    <Grid Grid.Row="2" ColumnSpacing="16" Margin="0,12,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="0" 
+                                               Source="bulletin-board.png" 
+                                               WidthRequest="24" 
+                                               HeightRequest="24" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Text="{Binding Duration}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="0" 
+                                               Source="student.png" 
+                                               WidthRequest="15" 
+                                               HeightRequest="15" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+
+                                            <Label Grid.Column="1" Text="{Binding Capacity}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Row="0" 
+                                               Source="speedometer.png" 
+                                               WidthRequest="15" 
+                                               HeightRequest="15" 
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                            <Label Grid.Column="1" Text="{Binding Credits}" FontSize="12" TextColor="#6B7280" VerticalOptions="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </Grid>
+
+                                    <!-- Action Button -->
+                                    <Button Grid.Row="3"
+                                            Text="{Binding ActionText}"
+                                            BackgroundColor="{Binding ActionColor}"
+                                            TextColor="White"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            HeightRequest="40"
+                                            Margin="0,12,0,0"
+                                            Command="{Binding Source={x:Reference ModulesCollection}, Path=BindingContext.ModuleActionCommand}"
+                                            CommandParameter="{Binding}" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.LoginPage"
+             Title="Login">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="40" Spacing="20">
+
+            <Label Text="🎓 Student Portal" 
+                   FontSize="32" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="Blue" />
+
+            <Label Text="Welcome! Please sign in to continue" 
+                   FontSize="16" 
+                   HorizontalOptions="Center" 
+                   TextColor="Gray" />
+
+            <Entry x:Name="EmailEntry" 
+                   Placeholder="Email Address" 
+                   Keyboard="Email" />
+
+            <Entry x:Name="PasswordEntry" 
+                   Placeholder="Password" 
+                   IsPassword="True" />
+
+            <Button x:Name="LoginButton" 
+                    Text="Login" 
+                    BackgroundColor="Blue" 
+                    TextColor="White" 
+                    HeightRequest="50"
+                    Clicked="OnLoginClicked" />
+
+            <Button Text="Demo Login (any email + password123)" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    HeightRequest="40"
+                    Clicked="OnDemoClicked" />
+
+            <Label Text="Don't have an account? Sign Up" 
+                   HorizontalOptions="Center" 
+                   TextColor="Blue"
+                   Margin="0,20,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignUpTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
