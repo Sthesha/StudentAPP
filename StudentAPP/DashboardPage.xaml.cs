@@ -34,6 +34,11 @@ public partial class DashboardPage : ContentPage
         }
     }
 
+    private async void OnApiDemoClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("apidemo");
+    }
+
     private async Task LoadStudentStats()
     {
         // Simulate API call to get student statistics

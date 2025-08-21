@@ -36,6 +36,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                
                             </Grid.RowDefinitions>
 
                             <Label Grid.Row="0"
@@ -196,6 +197,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
                         <Button Grid.Row="0" Grid.Column="0"
@@ -237,6 +239,16 @@
                                 FontSize="14"
                                 HeightRequest="50"
                                 Clicked="OnSearchModulesClicked" />
+
+
+                        <Button Grid.Row="2" Grid.Column="0"
+                                    Text="API Demo"
+                                    BackgroundColor="#DC2626"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    HeightRequest="50"
+                                    Clicked="OnApiDemoClicked" />
+                            
                         </Grid>
                     </Grid>
                 </Border>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentAPP.ApiDemoPage"
+             Title="REST API Demo"
+             BackgroundColor="#F8FAFC">
+
+    <ScrollView>
+        <Grid Padding="16" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="REST API Demo"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#1E293B"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Grid.Row="1"
+                           Text="Demonstrating GET and POST operations with mock data"
+                           FontSize="14"
+                           TextColor="#64748B"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,8,0,0" />
+                </Grid>
+            </Border>
+
+            <!-- GET Operations -->
+            <Border Grid.Row="1" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="GET Operations"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#059669"
+                           Margin="0,0,0,16" />
+
+                    <Grid Grid.Row="1" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0"
+                                Text="GET /api/students"
+                                BackgroundColor="#059669"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnGetStudentsClicked" />
+
+                        <Button Grid.Row="1"
+                                Text="GET /api/students/{id}"
+                                BackgroundColor="#059669"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnGetStudentByIdClicked" />
+
+                        <Button Grid.Row="2"
+                                Text="GET /api/modules"
+                                BackgroundColor="#059669"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnGetModulesClicked" />
+
+                        <Button Grid.Row="3"
+                                Text="GET /api/enrollments/{studentId}"
+                                BackgroundColor="#059669"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnGetEnrollmentsClicked" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- POST Operations -->
+            <Border Grid.Row="2" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="POST Operations"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#3B82F6"
+                           Margin="0,0,0,16" />
+
+                    <Grid Grid.Row="1" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0"
+                                Text="POST /api/students"
+                                BackgroundColor="#3B82F6"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnCreateStudentClicked" />
+
+                        <Button Grid.Row="1"
+                                Text="POST /api/enrollments"
+                                BackgroundColor="#3B82F6"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnEnrollStudentClicked" />
+
+                        <Button Grid.Row="2"
+                                Text="POST /api/auth/login"
+                                BackgroundColor="#3B82F6"
+                                TextColor="White"
+                                FontSize="14"
+                                HeightRequest="45"
+                                Clicked="OnLoginClicked" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Other Operations -->
+            <Border Grid.Row="3" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="Other Operations"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#7C3AED"
+                           Margin="0,0,0,16" />
+
+                    <Grid Grid.Row="1" ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Text="PUT /api/students/{id}"
+                                BackgroundColor="#F59E0B"
+                                TextColor="White"
+                                FontSize="12"
+                                HeightRequest="45"
+                                Clicked="OnUpdateStudentClicked" />
+
+                        <Button Grid.Column="1"
+                                Text="DELETE /api/students/{id}"
+                                BackgroundColor="#EF4444"
+                                TextColor="White"
+                                FontSize="12"
+                                HeightRequest="45"
+                                Clicked="OnDeleteStudentClicked" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Response Display -->
+            <Border Grid.Row="4" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                               Text="API Response"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1E293B" />
+
+                        <Button Grid.Column="1"
+                                Text="Clear"
+                                BackgroundColor="#64748B"
+                                TextColor="White"
+                                FontSize="12"
+                                WidthRequest="60"
+                                HeightRequest="30"
+                                Clicked="OnClearResponseClicked" />
+                    </Grid>
+
+                    <Border Grid.Row="1"
+                            BackgroundColor="#F8FAFC"
+                            Stroke="#E2E8F0"
+                            StrokeThickness="1"
+                            Padding="12"
+                            Margin="0,12,0,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <ScrollView HeightRequest="200">
+                            <Label x:Name="ResponseLabel"
+                                   Text="Response will appear here..."
+                                   FontFamily="Courier"
+                                   FontSize="12"
+                                   TextColor="#4B5563" />
+                        </ScrollView>
+                    </Border>
+
+                    <ActivityIndicator Grid.Row="2"
+                                       x:Name="LoadingIndicator"
+                                       IsVisible="False"
+                                       IsRunning="False"
+                                       Color="#3B82F6"
+                                       Margin="0,12,0,0" />
+                </Grid>
+            </Border>
+
+            <!-- API Info -->
+            <Border Grid.Row="5" BackgroundColor="White" Stroke="#E2E8F0" StrokeThickness="1" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="API Information"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1E293B"
+                           Margin="0,0,0,8" />
+
+                    <Label Grid.Row="1"
+                           Text="This is a mock REST API simulation. All data is stored in memory and resets when the app restarts. Perfect for demonstrating HTTP operations without a real backend server."
+                           FontSize="14"
+                           TextColor="#64748B"
+                           LineBreakMode="WordWrap" />
+                </Grid>
+            </Border>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

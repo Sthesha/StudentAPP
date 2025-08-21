@@ -26,6 +26,8 @@ public static class MauiProgram
         // Register DatabaseService as Singleton
         builder.Services.AddSingleton<DatabaseService>();
 
+        builder.Services.AddSingleton<MockApiService>();
+
         return builder.Build();
     }
 }

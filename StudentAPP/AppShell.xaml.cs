@@ -36,6 +36,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("moduledetails", typeof(ModuleDetailsPage));
         Routing.RegisterRoute("enrollmentdetails", typeof(EnrollmentDetailsPage));
         Routing.RegisterRoute("settings", typeof(SettingsPage));
+        Routing.RegisterRoute("apidemo", typeof(ApiDemoPage));
     }
 
     private async void OnSettingsClicked(object sender, EventArgs e)
